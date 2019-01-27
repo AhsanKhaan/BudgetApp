@@ -28,7 +28,7 @@ var budgetController = (function () {
             //id=last ID+1
             //create new Id
             if (data.allItems[type].length>0) {
-                ID = data.allItems[type](data.allItems[type].length - 1).id + 1;
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
             } else {
                 ID = 0;
             }
@@ -43,7 +43,11 @@ var budgetController = (function () {
             //return it to budget controller
             return newItem;
 
+        },
+        testing:function(){
+            return data;
         }
+
     }
 
 
