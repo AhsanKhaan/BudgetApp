@@ -78,7 +78,7 @@ var UIController = (function () {
 
 //Global APP Controller
 var Controller = (function (budgetCtrl, UICtrl) {
-z
+
     var setupEventListener = function () {
         var DOM = UICtrl.getDOMStrings();
         document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
