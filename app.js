@@ -10,6 +10,13 @@ var budgetController = (function () {
         this.description = description;
         this.value = value;
     };
+    var calculateTotal=function(type){
+        var sum=0;
+        data.totals[type].forEach(function(curr){
+            sum+=curr.value;
+        });
+        data.totals[type]=sum;
+    };
     var data = {
         allItems: {
             exp: [],
@@ -18,7 +25,18 @@ var budgetController = (function () {
         totals: {
             exp: 0,
             inc: 0
-        }
+        },
+        budget:0,
+        percentage:-1,
+    };
+    calculateBudget=function(){
+        //calculate Total Income and Expense
+        calculateTotal('inc');
+        calculateTotal('exp');
+        //budget=income -expense
+        data.budget=data.totals.inc-data.totals.exp;
+        //calculate percentage of income that we spent
+        data.percentage=Math.round((data.totals.exp/data.totals.inc)*100);
     };
     return {
         AddItem: function (type, des, val) {
